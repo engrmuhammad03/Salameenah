@@ -1,0 +1,878 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Salameenah Concept | Premium Fashion & Modest Wear</title>
+    <meta name="description" content="Salameenah Concept offers premium fashion collections including abaya, agbada, kaftan, senator wears, native caps, suits, and fabrics." />
+    <link rel="canonical" href="https://salameenahconcept.com/" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ----- reset & base ----- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', 'Inter', system-ui, sans-serif; background: #faf7f2; color: #1a1a1a; line-height: 1.6; overflow-x: hidden; }
+
+        /* navbar */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(200,164,92,0.2); transition: all 0.3s ease; padding: 0 2rem; }
+        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 75px; padding: 0 1.5rem; }
+        .logo img { height: 80px; width: auto; transition: all 0.3s ease; margin-right: 6.5rem; }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; margin: 0; margin-left: auto; padding-left: 1rem; }
+        .nav-links a { text-decoration: none; color: #333; font-weight: 500; transition: all 0.3s ease; position: relative; font-size: 1rem; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: #c8a45c; transition: all 0.3s ease; }
+        .nav-links a:hover::after { width: 100%; }
+        .hamburger { display: none; flex-direction: column; gap: 8px; background: none; border: none; cursor: pointer; z-index: 1001; }
+        .hamburger span { width: 26px; height: 2.5px; background: #1a1a1a; transition: all 0.3s ease; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+        /* hero */
+        .hero { min-height: 90vh; display: flex; align-items: center; padding-top: 75px; background: linear-gradient(135deg,#faf7f2,#fff); }
+        .hero-container { max-width: 1300px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; color: #1a1a1a; }
+        .hero-content h1 span { color: #a0784c; }
+        .hero-content p { font-size: 1.1rem; color: #6b6b6b; margin-bottom: 1.5rem; }
+        .hero-buttons { display: flex; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap; }
+        .btn-primary { display: inline-block; padding: 14px 32px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; background: #c8a45c; color: white; border: none; cursor: pointer; }
+        .btn-outline { display: inline-block; padding: 14px 32px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; background: transparent; color: #1a1a1a; border: 2px solid #c8a45c; cursor: pointer; }
+        .btn-primary:hover { background: #a0784c; transform: translateY(-3px); }
+        .btn-outline:hover { background: #c8a45c; color: white; transform: translateY(-3px); }
+        .hero-image-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; max-width: 500px; margin: 0 auto; }
+        .grid-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: pointer; }
+        .grid-img:hover { transform: scale(1.03); box-shadow: 0 8px 32px rgba(0,0,0,0.15); }
+        .img-large { grid-column: span 2; grid-row: span 2; }
+        .img-small { grid-column: span 1; grid-row: span 1; }
+
+        /* sections */
+        .section { padding: 5rem 2rem; max-width: 1300px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .divider { width: 60px; height: 3px; background: #c8a45c; margin: 0 auto 1rem; border-radius: 2px; }
+
+        /* categories */
+        .categories-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1.5rem; }
+        .category-card { background: white; border-radius: 16px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.3s ease; border: 1px solid #f0e8da; display: block; text-decoration: none; color: inherit; }
+        .category-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); border-color: #c8a45c; }
+        .category-card img { width: 100%; height: 120px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; }
+        .category-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+        .category-card .item-count { font-size: 0.75rem; color: #888; }
+
+        /* featured products */
+        .featured-products-section { background: #f5f0e8; padding: 5rem 2rem; scroll-margin-top: 80px; }
+        .featured-products-container { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2rem; }
+        @media (max-width:480px) {
+            .featured-products-container { grid-template-columns: repeat(2,1fr); gap: 0.8rem; }
+            .featured-card-content { padding: 0.8rem; }
+            .featured-card-title { font-size: 0.9rem; }
+            .featured-card-desc { font-size: 0.7rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+            .featured-card-btn { font-size: 0.7rem; padding: 4px 10px; }
+            .featured-card-img { aspect-ratio: 1/1; }
+        }
+        .featured-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; text-align: center; scroll-margin-top: 100px; }
+        .featured-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+        .featured-card-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+        .featured-card-content { padding: 1.5rem; }
+        .featured-card-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .featured-card-desc { color: #666; font-size: 0.9rem; margin-bottom: 1rem; }
+        .featured-card-btn {
+            display: inline-block;
+            background: #c8a45c;
+            color: #1a1a1a;
+            padding: 5px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            line-height: 1.4;
+        }
+        .featured-card-btn:hover { background: #a0784c; transform: translateX(4px); }
+
+        /* about */
+        .about-section { background: #f5f0e8; padding: 5rem 2rem; }
+        .about-container { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .dynamic-media-container { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.15); background: #1a1a1a; aspect-ratio: 4/3; cursor: pointer; touch-action: pan-y; }
+        .dynamic-media-slider { position: relative; width: 100%; height: 100%; }
+        .dynamic-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 0.8s ease; z-index: 1; }
+        .dynamic-slide.active { opacity: 1; visibility: visible; z-index: 2; }
+        .dynamic-video, .dynamic-image { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+        .media-timer-bar { position: absolute; bottom: 0; left: 0; height: 4px; background: #c8a45c; width: 0%; z-index: 10; transition: width linear 0.02s; box-shadow: 0 0 6px #c8a45c; pointer-events: none; }
+        .media-controls { position: absolute; bottom: 15px; right: 15px; display: flex; gap: 8px; z-index: 15; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); padding: 6px 12px; border-radius: 40px; }
+        .media-ctrl-btn { background: rgba(200,164,92,0.8); border: none; color: #1a1a1a; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; transition: 0.2s; font-weight: bold; }
+        .media-ctrl-btn:hover { background: #c8a45c; transform: scale(1.05); }
+
+        .about-content h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; }
+        .about-content p { color: #6b6b6b; line-height: 1.8; margin-bottom: 1.5rem; text-align: justify; }
+        .about-features { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .feature { display: flex; align-items: center; gap: 8px; font-weight: 600; background: rgba(200,164,92,0.1); padding: 8px 18px; border-radius: 50px; transition: all 0.3s ease; font-size: 0.85rem; }
+        .feature i { color: #a0784c; font-size: 0.9rem; }
+        .feature:hover { background: rgba(200,164,92,0.2); transform: translateX(5px); }
+
+        /* ===== TESTIMONIALS – HORIZONTAL SCROLL with touch, drag, keyboard ===== */
+        .testimonials-section { background: #fff; padding: 5rem 2rem; overflow: hidden; }
+        .testimonials-container { max-width: 1300px; margin: 0 auto; position: relative; }
+        .testimonial-scroll-wrapper {
+            overflow: hidden;
+            position: relative;
+            touch-action: pan-y;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .testimonial-scroll-wrapper:active { cursor: grabbing; }
+        .testimonial-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+            width: max-content;
+            padding: 0.5rem 0;
+        }
+        .testimonial-card {
+            flex: 0 0 320px;
+            max-width: 320px;
+            background: #faf7f2;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid #f0e8da;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .testimonial-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); border-color: #c8a45c; }
+        .testimonial-card .stars { color: #c8a45c; margin-bottom: 0.75rem; letter-spacing: 2px; }
+        .testimonial-card blockquote { font-size: 1rem; line-height: 1.7; color: #333; margin-bottom: 1.2rem; font-style: italic; }
+        .testimonial-card .customer { display: flex; align-items: center; gap: 0.8rem; }
+        .testimonial-card .customer .avatar { width: 48px; height: 48px; border-radius: 50%; background: #c8a45c; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; flex-shrink: 0; }
+        .testimonial-card .customer .name { font-weight: 600; font-size: 1rem; margin: 0; }
+        .testimonial-card .customer .title { font-size: 0.8rem; color: #888; margin: 0; }
+
+        /* scroll arrows – positioned lower */
+        .scroll-arrow {
+            position: absolute;
+            bottom: 10px;
+            transform: translateY(0);
+            background: rgba(200,164,92,0.85);
+            border: none;
+            color: #1a1a1a;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 20;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .scroll-arrow:hover { background: #c8a45c; transform: scale(1.05); }
+        .scroll-arrow.prev { left: 10px; }
+        .scroll-arrow.next { right: 10px; }
+
+        /* navigation dots */
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1.8rem;
+        }
+        .testimonial-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            padding: 0;
+        }
+        .testimonial-dots .dot.active {
+            background: #c8a45c;
+            transform: scale(1.2);
+        }
+        .testimonial-dots .dot:hover { background: #c8a45c; }
+
+        @media (max-width: 600px) {
+            .testimonial-card { flex: 0 0 280px; max-width: 280px; padding: 1.5rem; }
+            .scroll-arrow { width: 34px; height: 34px; font-size: 0.9rem; bottom: 5px; }
+            .scroll-arrow.prev { left: 5px; }
+            .scroll-arrow.next { right: 5px; }
+            .testimonial-dots { gap: 8px; }
+            .testimonial-dots .dot { width: 10px; height: 10px; }
+        }
+
+        /* contact */
+        .contact-section { padding: 5rem 2rem; position: relative; background: #1a1a1a; }
+        .contact-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg,rgba(0,0,0,0.75),rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop'); background-size: cover; background-position: center; z-index: 0; }
+        .contact-container { max-width: 1300px; margin: 0 auto; position: relative; z-index: 2; }
+        .contact-section .section-header h2, .contact-section .section-header p { color: white; }
+        .contact-section .divider { background: #c8a45c; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 15px 20px; border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; font-size: 1rem; margin-bottom: 1.2rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); color: white; transition: all 0.3s ease; }
+        .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.7); }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #c8a45c; background: rgba(255,255,255,0.2); }
+        .contact-form textarea { min-height: 130px; resize: vertical; }
+        .submit-btn { width: 100%; padding: 15px; border-radius: 50px; background: #c8a45c; color: #1a1a1a; border: none; font-weight: 700; cursor: pointer; transition: all 0.3s ease; }
+        .submit-btn:hover { background: #a0784c; color: white; transform: translateY(-3px); }
+        .contact-info h3 { font-size: 1.5rem; margin-bottom: 1.2rem; color: white; }
+        .contact-info-item { margin-bottom: 1rem; color: rgba(255,255,255,0.9); display: flex; align-items: center; gap: 12px; transition: all 0.3s ease; }
+        .contact-info-item:hover { transform: translateX(8px); }
+        .contact-info-item a { color: rgba(255,255,255,0.9); text-decoration: none; transition: all 0.3s ease; }
+        .contact-info-item a:hover { color: #c8a45c; }
+        .contact-info-item i { width: 35px; height: 35px; display: inline-flex; align-items: center; justify-content: center; background: rgba(200,164,92,0.3); border-radius: 50%; color: #c8a45c; transition: all 0.3s ease; }
+        .contact-info-item:hover i { background: #c8a45c; color: #1a1a1a; }
+        .social-contact-icons { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+        .social-contact-link { display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; transition: all 0.3s ease; text-decoration: none; font-size: 1.3rem; color: white; }
+        .social-contact-link.whatsapp { background: #25D366; }
+        .social-contact-link.instagram { background: #E4405F; }
+        .social-contact-link.tiktok { background: #000000; }
+        .social-contact-link:hover { transform: translateY(-5px); filter: brightness(1.05); }
+
+        /* footer */
+        .footer { background: #1a1a1a; color: #ccc; padding: 3rem 2rem 1.5rem; }
+        .footer-container { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer h4 { color: white; margin-bottom: 1rem; }
+        .footer a { color: #bbb; text-decoration: none; display: block; margin-bottom: 6px; transition: all 0.3s ease; }
+        .footer a:hover { color: #c8a45c; transform: translateX(5px); }
+        .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+        .newsletter-input { padding: 12px 16px; border-radius: 50px; border: 1px solid #444; background: #2a2a2a; color: white; outline: none; transition: all 0.3s ease; }
+        .newsletter-input:focus { border-color: #c8a45c; }
+        .newsletter-btn { background: #c8a45c; color: #1a1a1a; border: none; padding: 10px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        .newsletter-btn:hover { background: #a0784c; color: white; }
+        .footer-bottom { text-align: center; border-top: 1px solid #333; padding-top: 1.5rem; font-size: 0.85rem; }
+
+        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: #1a1a1a; color: white; padding: 12px 28px; border-radius: 50px; font-weight: 600; z-index: 3000; transition: transform 0.3s; }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+
+        .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* responsive */
+        @media (max-width:968px) {
+            .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: white; flex-direction: column; padding: 100px 2rem 2rem; box-shadow: -4px 0 30px rgba(0,0,0,0.1); transition: right 0.3s ease; z-index: 999; gap: 2rem; margin-left: 0; padding-left: 2rem; }
+            .nav-links.active { right: 0; }
+            .hamburger { display: flex; }
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .about-container { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width:480px) {
+            .navbar { padding: 0 1rem; }
+            .nav-container { height: 65px; }
+            .logo img { height: 100px; margin-right: 8rem; }
+            .hero { padding-top: 65px; }
+            .hero-content h1 { font-size: 1.8rem; }
+            .btn-primary, .btn-outline { width: 100%; text-align: center; }
+            .categories-grid { grid-template-columns: repeat(2,1fr); gap: 0.8rem; }
+            .category-card img { height: 80px; }
+            .section { padding: 3rem 1rem; }
+            .testimonials-section { padding: 3rem 1rem; }
+        }
+        /* fullscreen modal */
+        .fullscreen-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 2000; display: flex; align-items: center; justify-content: center; visibility: hidden; opacity: 0; transition: 0.3s; cursor: pointer; }
+        .fullscreen-modal.active { visibility: visible; opacity: 1; }
+        .fullscreen-content { max-width: 90%; max-height: 90%; position: relative; }
+        .fullscreen-video, .fullscreen-image { max-width: 100%; max-height: 85vh; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .fullscreen-close { position: absolute; top: -40px; right: 0; background: #c8a45c; border: none; color: #1a1a1a; width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
+        .fullscreen-close:hover { transform: scale(1.1); background: #a0784c; }
+        .fullscreen-caption { text-align: center; color: #c8a45c; margin-top: 15px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo"><img src="salameenah-logo.png" alt="Salameenah Concept Logo" onerror="this.src='https://placehold.co/200x50?text=Salameenah'"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" onclick="closeMenu()">Home</a></li>
+            <li><a href="#categories" onclick="closeMenu()">Categories</a></li>
+            <li><a href="#featured-products" onclick="closeMenu()">Products</a></li>
+            <li><a href="#about" onclick="closeMenu()">About</a></li>
+            <li><a href="#testimonials" onclick="closeMenu()">Testimonials</a></li>
+            <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>Elevate Your <span>Style</span> with Salameenah</h1>
+            <p>Discover premium fashion collections for men and women — from clothing and shoes to bags, lace, and fabrics.</p>
+            <div class="hero-buttons">
+                <a href="#featured-products" class="btn-primary">Shop Now</a>
+                <a href="#categories" class="btn-outline">Explore</a>
+            </div>
+        </div>
+        <div class="hero-image-grid" id="heroImageGrid">
+            <img id="img1" src="https://images.pexels.com/photos/6311708/pexels-photo-6311708.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" class="grid-img img-large" alt="Fashion model" loading="lazy">
+            <img id="img2" src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" class="grid-img img-small" alt="Fashion accessories" loading="lazy">
+            <img id="img3" src="https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" class="grid-img img-small" alt="Fashion clothing" loading="lazy">
+            <img id="img4" src="https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" class="grid-img img-small" alt="Shoes collection" loading="lazy">
+            <img id="img5" src="https://images.pexels.com/photos/985635/pexels-photo-985635.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" class="grid-img img-small" alt="Bags collection" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="section" id="categories">
+    <div class="section-header"><h2>Shop by Category</h2><div class="divider"></div><p>Click any category to jump to featured products</p></div>
+    <div class="categories-grid">
+        <div class="category-card" data-category="abaya"><img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=300&h=200&fit=crop" alt="Abaya"><h3>Abaya Collection</h3><span class="item-count">Elegant Styles</span></div>
+        <div class="category-card" data-category="bags"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=300&h=200&fit=crop" alt="Bags"><h3>Bags</h3><span class="item-count">Luxury Selection</span></div>
+        <div class="category-card" data-category="men"><img src="https://images.unsplash.com/photo-1617137968427-85924c0aafed?w=300&h=200&fit=crop" alt="Men"><h3>Men's Clothing</h3><span class="item-count">Premium Collection</span></div>
+        <div class="category-card" data-category="ready"><img src="https://images.unsplash.com/photo-1485968579680-29e6b7d19abf?w=300&h=200&fit=crop" alt="Ready"><h3>Ready to Wear</h3><span class="item-count">Grab & Go</span></div>
+        <div class="category-card" data-category="shoes"><img src="https://images.unsplash.com/photo-1543163521-1bf539bcc5e9?w=300&h=200&fit=crop" alt="Shoes"><h3>Shoes</h3><span class="item-count">Men & Women</span></div>
+        <div class="category-card" data-category="fabrics"><img src="https://images.unsplash.com/photo-1615486511484-8c2e06f6b0d6?w=300&h=200&fit=crop" alt="Fabrics"><h3>Fabrics</h3><span class="item-count">Quality Materials</span></div>
+        <div class="category-card" data-category="atamfa"><img src="https://images.unsplash.com/photo-1585487001789-e2eaa65f1696?w=300&h=200&fit=crop" alt="Atamfa"><h3>Atamfa Collection</h3><span class="item-count">Traditional Elegance</span></div>
+        <div class="category-card" data-category="lace"><img src="https://images.unsplash.com/photo-1605280657013-5ad155cd6db7?w=300&h=200&fit=crop" alt="Lace"><h3>Lace Collection</h3><span class="item-count">Premium Lace</span></div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="featured-products-section" id="featured-products">
+    <div class="section-header"><h2>Featured Products</h2><div class="divider"></div><p>Explore our most popular collections</p></div>
+    <div class="featured-products-container" id="featuredProductsContainer"><div class="loading-spinner"><i class="fas fa-spinner fa-pulse"></i> Loading collections...</div></div>
+</section>
+
+<!-- About + Media Carousel -->
+<section class="about-section" id="about">
+    <div class="about-container">
+        <div class="dynamic-media-container" id="mediaContainer" tabindex="0" role="region" aria-label="Media carousel">
+            <div class="dynamic-media-slider" id="dynamicSlider"></div>
+            <div class="media-timer-bar" id="mediaTimerBar"></div>
+            <div class="media-controls">
+                <button class="media-ctrl-btn" id="mediaPrevBtn" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="media-ctrl-btn" id="mediaPlayPauseBtn" aria-label="Play/Pause"><i class="fas fa-pause"></i></button>
+                <button class="media-ctrl-btn" id="mediaNextBtn" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        <div class="about-content">
+            <h2 class="fade-up delay-1">About Salameenah Concept</h2>
+            <p class="fade-up delay-2">We curate high-quality fashion for men and women — from clothing and shoes to bags, lace, and fabrics. Our ready-to-wear collection and premium materials help you express your unique style. At Salameenah Concept, we believe that fashion is a form of self-expression. Every piece in our collection is carefully selected to ensure premium quality, contemporary design, and lasting comfort.</p>
+            <p class="fade-up delay-3">Whether you're looking for traditional attire like agbada and abaya, modern casual wear, or accessories that complete your look, we've got you covered. Our commitment to excellence extends beyond products — we provide fast delivery, easy returns, and exceptional customer service. From the moment you browse our collections to the day your package arrives, we strive to make every interaction seamless and enjoyable.</p>
+            <div class="about-features fade-up delay-4">
+                <span class="feature"><i class="fas fa-check-circle"></i> Premium Quality</span>
+                <span class="feature"><i class="fas fa-check-circle"></i> Fast Delivery</span>
+                <span class="feature"><i class="fas fa-check-circle"></i> Affordable Prices</span>
+                <span class="feature"><i class="fas fa-check-circle"></i> Easy Returns</span>
+                <span class="feature"><i class="fas fa-check-circle"></i> 24/7 Support</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS – HORIZONTAL SCROLL with touch, drag, keyboard, dots, lower arrows ===== -->
+<section class="testimonials-section" id="testimonials">
+    <div class="testimonials-container">
+        <div class="section-header">
+            <h2>What Our Customers Say</h2>
+            <div class="divider"></div>
+            <p>Drag or use arrow keys to browse reviews</p>
+        </div>
+
+        <div class="testimonial-scroll-wrapper" id="testimonialWrapper" tabindex="0" role="region" aria-label="Testimonials carousel">
+            <div class="testimonial-track" id="testimonialTrack">
+                <!-- cards will be injected by JS -->
+            </div>
+        </div>
+
+        <!-- navigation arrows – positioned lower (bottom) -->
+        <button class="scroll-arrow prev" id="testiPrev" aria-label="Previous testimonials"><i class="fas fa-chevron-left"></i></button>
+        <button class="scroll-arrow next" id="testiNext" aria-label="Next testimonials"><i class="fas fa-chevron-right"></i></button>
+
+        <!-- navigation dots -->
+        <div class="testimonial-dots" id="testimonialDots"></div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section" id="contact">
+    <div class="contact-container">
+        <div class="section-header"><h2>Get in Touch</h2><div class="divider"></div><p>We'd love to hear from you</p></div>
+        <div class="contact-grid">
+            <form class="contact-form" id="contactForm">
+                <input type="text" id="contactName" placeholder="Your Name" required>
+                <input type="email" id="contactEmail" placeholder="Your Email" required>
+                <input type="text" id="contactSubject" placeholder="Subject">
+                <textarea id="contactMessage" placeholder="Your Message" required></textarea>
+                <button type="submit" class="submit-btn" id="contactSubmitBtn">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <h3>Contact Info</h3>
+                <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>123 Fashion Avenue, Lagos, Nigeria</span></div>
+                <div class="contact-info-item"><i class="fas fa-phone-alt"></i><a href="tel:+2348001234567">+234 800 123 4567</a></div>
+                <div class="contact-info-item"><i class="fas fa-envelope"></i><a href="mailto:hello@salameenahconcept.com">hello@salameenahconcept.com</a></div>
+                <div class="social-contact-icons">
+                    <a href="#" class="social-contact-link whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-contact-link instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-contact-link tiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div><h4>Salameenah Concept</h4><p>Premium fashion for everyone.</p></div>
+        <div><h4>Quick Links</h4><a href="#home" onclick="closeMenu()">Home</a><a href="#categories" onclick="closeMenu()">Categories</a><a href="#featured-products" onclick="closeMenu()">Products</a><a href="#about" onclick="closeMenu()">About</a><a href="#testimonials" onclick="closeMenu()">Testimonials</a><a href="#contact" onclick="closeMenu()">Contact</a></div>
+        <div><h4>Categories</h4><a href="#">Abaya Collection</a><a href="#">Bags</a><a href="#">Men's Clothing</a><a href="#">Ready to Wear</a><a href="#">Shoes</a><a href="#">Fabrics</a><a href="#">Atamfa Collection</a><a href="#">Lace Collection</a></div>
+        <div><h4>Newsletter</h4><form class="newsletter-form" onsubmit="subscribeNewsletter(event)"><input type="email" class="newsletter-input" placeholder="Your email" required><button type="submit" class="newsletter-btn">Subscribe →</button></form></div>
+    </div>
+    <div class="footer-bottom">&copy; 2025 Salameenah Concept. All rights reserved.</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- fullscreen modal -->
+<div id="fullscreenModal" class="fullscreen-modal">
+    <div class="fullscreen-content">
+        <button class="fullscreen-close" id="closeFullscreen"><i class="fas fa-times"></i></button>
+        <video id="fullscreenVideo" class="fullscreen-video" controls style="display:none;"></video>
+        <img id="fullscreenImage" class="fullscreen-image" style="display:none;" alt="Fullscreen view">
+        <div id="fullscreenCaption" class="fullscreen-caption"></div>
+    </div>
+</div>
+
+<script>
+    // ----- CONFIG -----
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLSfqotncD-oCSDe7-HiHauQmxPgGfb2cUVQf7SmzgfMSZipLH3c-GneHFLAK9kRao_Q/exec";
+    const GOOGLE_SHEETS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS4sl15pExcCu6LudOLLqK4clokRqrZjqBThg-dygvDbceOSHG_nn5tn9lBYoyYvMIdHThCCvuLapv9/pub?output=csv";
+
+    const featuredCategories = [
+        { page:"abaya", title:"Abaya Collection", desc:"Elegant modest wear for every occasion.", link:"abaya.html", defaultImg:"https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400&h=400&fit=crop" },
+        { page:"bags", title:"Bags Collection", desc:"Luxury handcrafted bags for the modern fashionista.", link:"bags.html", defaultImg:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop" },
+        { page:"men", title:"Men's Clothing", desc:"Premium traditional and modern wear.", link:"men-clothing.html", defaultImg:"https://images.unsplash.com/photo-1593030761757-71f1b261f4e1?w=400&h=400&fit=crop" },
+        { page:"ready", title:"Ready-to-Wear", desc:"Grab & go – stylish pieces ready to wear.", link:"ready-to-wear.html", defaultImg:"https://images.unsplash.com/photo-1485968579680-29e6b7d19abf?w=400&h=400&fit=crop" },
+        { page:"shoes", title:"Shoes Collection", desc:"Step out in style and comfort.", link:"shoes.html", defaultImg:"https://images.unsplash.com/photo-1543163521-1bf539bcc5e9?w=400&h=400&fit=crop" },
+        { page:"fabrics", title:"Fabrics Collection", desc:"Authentic African prints and luxury fabrics.", link:"fabrics.html", defaultImg:"https://images.unsplash.com/photo-1615486511484-8c2e06f6b0d6?w=400&h=400&fit=crop" },
+        { page:"atamfa", title:"Atamfa Collection", desc:"Authentic African traditional attire.", link:"atamfa.html", defaultImg:"https://images.unsplash.com/photo-1585487001789-e2eaa65f1696?w=400&h=400&fit=crop" },
+        { page:"lace", title:"Lace Collection", desc:"Exquisite lace fabrics for every occasion.", link:"lace.html", defaultImg:"https://images.unsplash.com/photo-1605280657013-5ad155cd6db7?w=400&h=400&fit=crop" }
+    ];
+    let categoryImages = {};
+
+    async function loadFeaturedImagesFromSheet() {
+        if (!GOOGLE_SHEETS_CSV_URL) { renderFeaturedProducts(); return; }
+        try {
+            const resp = await fetch(GOOGLE_SHEETS_CSV_URL);
+            const csv = await resp.text();
+            const rows = csv.split('\n');
+            const headers = rows[0].toLowerCase().split(',');
+            const imgIdx = headers.findIndex(h => h.includes('image') || h.includes('url'));
+            const pageIdx = headers.findIndex(h => h.includes('page'));
+            if (pageIdx === -1 || imgIdx === -1) { renderFeaturedProducts(); return; }
+            for (let i=1; i<rows.length; i++) {
+                if (!rows[i].trim()) continue;
+                const cols = rows[i].split(',');
+                const pageVal = (cols[pageIdx] || '').trim().toLowerCase();
+                const imgUrl = (cols[imgIdx] || '').trim();
+                if (pageVal && imgUrl && !categoryImages[pageVal]) categoryImages[pageVal] = imgUrl;
+            }
+            renderFeaturedProducts();
+        } catch(e) { renderFeaturedProducts(); }
+    }
+
+    function renderFeaturedProducts() {
+        const container = document.getElementById('featuredProductsContainer');
+        if (!container) return;
+        container.innerHTML = featuredCategories.map(cat => {
+            const img = categoryImages[cat.page] || cat.defaultImg;
+            return `<div class="featured-card" id="card-${cat.page}" data-category="${cat.page}">
+                <img src="${img}" alt="${cat.title}" class="featured-card-img" onerror="this.src='${cat.defaultImg}'">
+                <div class="featured-card-content">
+                    <h3 class="featured-card-title">${cat.title}</h3>
+                    <p class="featured-card-desc">${cat.desc}</p>
+                    <a href="${cat.link}" class="featured-card-btn">View Collection →</a>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    // category scroll
+    const catMap = { abaya:'card-abaya', bags:'card-bags', men:'card-men', ready:'card-ready', shoes:'card-shoes', fabrics:'card-fabrics', atamfa:'card-atamfa', lace:'card-lace' };
+    function scrollToCategory(cat) {
+        const el = document.getElementById(catMap[cat]);
+        if (!el) return;
+        el.scrollIntoView({ behavior:'smooth', block:'center' });
+        document.querySelectorAll('.featured-card').forEach(c => c.classList.remove('highlight'));
+        el.classList.add('highlight');
+        setTimeout(() => el.classList.remove('highlight'), 2400);
+    }
+    function attachCategoryClicks() {
+        document.querySelectorAll('.category-card').forEach(card => {
+            const clone = card.cloneNode(true);
+            card.parentNode.replaceChild(clone, card);
+            clone.addEventListener('click', e => {
+                e.preventDefault();
+                const cat = clone.dataset.category;
+                if (cat) scrollToCategory(cat);
+            });
+        });
+    }
+
+    // contact form
+    document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('contactSubmitBtn');
+        const orig = btn.innerHTML;
+        btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+        const data = {
+            requestType:'contact',
+            name: document.getElementById('contactName').value.trim(),
+            email: document.getElementById('contactEmail').value.trim(),
+            subject: document.getElementById('contactSubject').value.trim(),
+            message: document.getElementById('contactMessage').value.trim()
+        };
+        try {
+            await fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+            showToast('Message sent! We will reply soon.');
+            this.reset();
+        } catch(e) { showToast('Failed to send. Please try again.'); }
+        btn.disabled = false; btn.innerHTML = orig;
+    });
+
+    // ----- MEDIA CAROUSEL (touch + keyboard) -----
+    const mediaItems = [
+        { type:'video', src:'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4', label:'Fashion Showcase' },
+        { type:'video', src:'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/earth.mp4', label:'Elegant Styles' },
+        { type:'video', src:'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/elephant-dream.mp4', label:'Premium Collection' },
+        { type:'image', src:'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&h=600&fit=crop', label:'Fashion Lookbook' },
+        { type:'image', src:'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&h=600&fit=crop', label:'Style Inspiration' }
+    ];
+    let currentIdx = 0, autoInterval = null, isPlaying = true, timerInterval = null;
+    const slider = document.getElementById('dynamicSlider');
+    const container = document.getElementById('mediaContainer');
+
+    function buildSlides() {
+        slider.innerHTML = mediaItems.map((item, idx) => {
+            if (item.type === 'video') {
+                return `<div class="dynamic-slide" data-idx="${idx}" data-type="video" data-src="${item.src}" data-label="${item.label}"><video class="dynamic-video" muted playsinline loop><source src="${item.src}" type="video/mp4"></video></div>`;
+            } else {
+                return `<div class="dynamic-slide" data-idx="${idx}" data-type="image" data-src="${item.src}" data-label="${item.label}"><img class="dynamic-image" src="${item.src}" alt="${item.label}"></div>`;
+            }
+        }).join('');
+    }
+
+    function updateSlide(index) {
+        const slides = document.querySelectorAll('.dynamic-slide');
+        slides.forEach((s, i) => s.classList.toggle('active', i === index));
+        const item = mediaItems[index];
+        if (item.type === 'video') {
+            const v = slides[index]?.querySelector('video');
+            if (v) { v.currentTime = 0; v.play().catch(e=>{}); }
+        }
+        resetTimer();
+    }
+
+    function resetTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        const bar = document.getElementById('mediaTimerBar');
+        bar.style.width = '0%';
+        if (!isPlaying) return;
+        const duration = 5000, start = Date.now();
+        timerInterval = setInterval(() => {
+            if (!isPlaying) return;
+            const pct = Math.min(((Date.now() - start) / duration) * 100, 100);
+            bar.style.width = pct + '%';
+            if (pct >= 100) { clearInterval(timerInterval); goToSlide((currentIdx + 1) % mediaItems.length); }
+        }, 30);
+    }
+
+    function goToSlide(idx) {
+        if (currentIdx === idx) return;
+        currentIdx = idx;
+        updateSlide(currentIdx);
+    }
+
+    function nextSlide() { goToSlide((currentIdx + 1) % mediaItems.length); }
+    function prevSlide() { goToSlide((currentIdx - 1 + mediaItems.length) % mediaItems.length); }
+
+    function startAuto() {
+        if (autoInterval) clearInterval(autoInterval);
+        autoInterval = setInterval(() => { if (isPlaying) nextSlide(); }, 5050);
+        resetTimer();
+    }
+    function stopAuto() { if (autoInterval) clearInterval(autoInterval); autoInterval = null; if (timerInterval) clearInterval(timerInterval); }
+
+    function togglePlay() {
+        isPlaying = !isPlaying;
+        const btn = document.getElementById('mediaPlayPauseBtn');
+        if (isPlaying) { btn.innerHTML = '<i class="fas fa-pause"></i>'; startAuto(); resetTimer(); }
+        else { btn.innerHTML = '<i class="fas fa-play"></i>'; stopAuto(); if (timerInterval) clearInterval(timerInterval); document.getElementById('mediaTimerBar').style.width = '0%'; }
+    }
+
+    let touchStartX = 0;
+    container.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    container.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 40) {
+            if (diff > 0) { if (!isPlaying) nextSlide(); else { stopAuto(); nextSlide(); startAuto(); } }
+            else { if (!isPlaying) prevSlide(); else { stopAuto(); prevSlide(); startAuto(); } }
+        }
+    }, { passive: true });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); if (!isPlaying) prevSlide(); else { stopAuto(); prevSlide(); startAuto(); } }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); if (!isPlaying) nextSlide(); else { stopAuto(); nextSlide(); startAuto(); } }
+    });
+
+    document.getElementById('mediaPrevBtn').addEventListener('click', e => { e.stopPropagation(); if (!isPlaying) prevSlide(); else { stopAuto(); prevSlide(); startAuto(); } });
+    document.getElementById('mediaNextBtn').addEventListener('click', e => { e.stopPropagation(); if (!isPlaying) nextSlide(); else { stopAuto(); nextSlide(); startAuto(); } });
+    document.getElementById('mediaPlayPauseBtn').addEventListener('click', e => { e.stopPropagation(); togglePlay(); });
+
+    // fullscreen modal
+    const modal = document.getElementById('fullscreenModal');
+    const fv = document.getElementById('fullscreenVideo'), fi = document.getElementById('fullscreenImage'), fc = document.getElementById('fullscreenCaption');
+    function openFullscreen(type, src, label) {
+        if (type === 'video') { fv.style.display = 'block'; fi.style.display = 'none'; fv.src = src; fv.load(); fv.play().catch(e=>{}); }
+        else { fv.style.display = 'none'; fi.style.display = 'block'; fi.src = src; }
+        fc.textContent = label || '';
+        modal.classList.add('active');
+        if (isPlaying) togglePlay();
+    }
+    function closeFullscreen() {
+        modal.classList.remove('active');
+        if (fv) { fv.pause(); fv.src = ''; }
+        if (!isPlaying && autoInterval === null) togglePlay();
+    }
+    document.getElementById('mediaContainer').addEventListener('click', (e) => {
+        if (e.target.closest('.media-ctrl-btn')) return;
+        const active = document.querySelector('.dynamic-slide.active');
+        if (active) openFullscreen(active.dataset.type, active.dataset.src, active.dataset.label);
+    });
+    document.getElementById('closeFullscreen').addEventListener('click', closeFullscreen);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeFullscreen(); });
+
+    buildSlides(); updateSlide(0); startAuto();
+
+    // ===== TESTIMONIALS – HORIZONTAL SCROLL with touch, drag, keyboard, dots, lower arrows =====
+    (function initTestimonials() {
+        const track = document.getElementById('testimonialTrack');
+        const wrapper = document.getElementById('testimonialWrapper');
+        const prevBtn = document.getElementById('testiPrev');
+        const nextBtn = document.getElementById('testiNext');
+        const dotsContainer = document.getElementById('testimonialDots');
+
+        // testimonial data
+        const testimonials = [
+            { stars: 5, quote: "The Abaya I ordered exceeded my expectations. The fabric is luxurious and the fit is perfect.", name: "Amina B.", title: "Lagos, Nigeria", initial: "A" },
+            { stars: 5, quote: "Salameenah Concept is my go-to for traditional menswear. The senator outfits and caps are top-notch.", name: "Kabir O.", title: "Abuja, Nigeria", initial: "K" },
+            { stars: 5, quote: "I bought a lace fabric for my wedding and it was absolutely stunning. The quality is unmatched.", name: "Zainab M.", title: "Kano, Nigeria", initial: "Z" },
+            { stars: 5, quote: "The ready-to-wear collection is amazing. I got a beautiful gown and received so many compliments.", name: "Fatima A.", title: "Ibadan, Nigeria", initial: "F" },
+            { stars: 5, quote: "Fast delivery and excellent customer service. The bags are high quality and stylish.", name: "Chidi O.", title: "Port Harcourt, Nigeria", initial: "C" },
+            { stars: 5, quote: "I love the Atamfa collection. The traditional outfits are elegant and well-tailored.", name: "Ngozi E.", title: "Enugu, Nigeria", initial: "N" }
+        ];
+
+        // build cards
+        track.innerHTML = testimonials.map(t => `
+            <div class="testimonial-card">
+                <div class="stars">${'<i class="fas fa-star"></i>'.repeat(t.stars)}</div>
+                <blockquote>"${t.quote}"</blockquote>
+                <div class="customer">
+                    <div class="avatar">${t.initial}</div>
+                    <div><p class="name">${t.name}</p><p class="title">${t.title}</p></div>
+                </div>
+            </div>
+        `).join('');
+
+        // build dots
+        const totalSlides = testimonials.length;
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.dataset.index = i;
+            dot.setAttribute('aria-label', `Go to testimonial ${i+1}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+
+        let currentScroll = 0;
+        let isDragging = false;
+        let startX = 0;
+        let prevTranslate = 0;
+
+        function getMaxScroll() {
+            const wrapperWidth = wrapper.offsetWidth;
+            const trackWidth = track.scrollWidth;
+            return Math.max(0, trackWidth - wrapperWidth);
+        }
+
+        function getSlideIndex(scrollPos) {
+            const cardWidth = document.querySelector('.testimonial-card')?.offsetWidth || 320;
+            const gap = 32;
+            const step = cardWidth + gap;
+            return Math.round(scrollPos / step);
+        }
+
+        function updateDots(index) {
+            const dots = dotsContainer.querySelectorAll('.dot');
+            dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        }
+
+        function goToSlide(index) {
+            const cardWidth = document.querySelector('.testimonial-card')?.offsetWidth || 320;
+            const gap = 32;
+            const step = cardWidth + gap;
+            const target = index * step;
+            currentScroll = Math.max(0, Math.min(target, getMaxScroll()));
+            updateTrack(true);
+            updateDots(index);
+        }
+
+        function updateTrack(animate = true) {
+            const max = getMaxScroll();
+            currentScroll = Math.max(0, Math.min(currentScroll, max));
+            track.style.transition = animate ? 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+            track.style.transform = `translateX(-${currentScroll}px)`;
+            // update dots based on current scroll
+            const idx = getSlideIndex(currentScroll);
+            updateDots(Math.min(idx, totalSlides - 1));
+            // button states
+            prevBtn.style.opacity = currentScroll <= 1 ? '0.4' : '1';
+            nextBtn.style.opacity = currentScroll >= max - 1 ? '0.4' : '1';
+        }
+
+        function goNext() {
+            const cardWidth = document.querySelector('.testimonial-card')?.offsetWidth || 320;
+            const gap = 32;
+            const step = cardWidth + gap;
+            currentScroll += step;
+            updateTrack(true);
+        }
+
+        function goPrev() {
+            const cardWidth = document.querySelector('.testimonial-card')?.offsetWidth || 320;
+            const gap = 32;
+            const step = cardWidth + gap;
+            currentScroll -= step;
+            updateTrack(true);
+        }
+
+        // arrow buttons
+        prevBtn.addEventListener('click', goPrev);
+        nextBtn.addEventListener('click', goNext);
+
+        // keyboard
+        wrapper.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); }
+            else if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); }
+        });
+        wrapper.setAttribute('tabindex', '0');
+
+        // ----- DRAG / TOUCH -----
+        function dragStart(e) {
+            isDragging = true;
+            startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+            prevTranslate = currentScroll;
+            track.style.transition = 'none';
+            wrapper.style.cursor = 'grabbing';
+        }
+
+        function dragMove(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            const currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+            const diff = startX - currentX;
+            currentScroll = prevTranslate + diff;
+            const max = getMaxScroll();
+            currentScroll = Math.max(0, Math.min(currentScroll, max));
+            track.style.transform = `translateX(-${currentScroll}px)`;
+        }
+
+        function dragEnd(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            wrapper.style.cursor = 'grab';
+            // snap to nearest slide
+            const idx = getSlideIndex(currentScroll);
+            const cardWidth = document.querySelector('.testimonial-card')?.offsetWidth || 320;
+            const gap = 32;
+            const step = cardWidth + gap;
+            const snapped = Math.max(0, Math.min(idx * step, getMaxScroll()));
+            currentScroll = snapped;
+            updateTrack(true);
+        }
+
+        wrapper.addEventListener('mousedown', dragStart);
+        window.addEventListener('mousemove', dragMove);
+        window.addEventListener('mouseup', dragEnd);
+
+        wrapper.addEventListener('touchstart', dragStart, { passive: true });
+        window.addEventListener('touchmove', dragMove, { passive: false });
+        window.addEventListener('touchend', dragEnd, { passive: true });
+
+        // initial
+        setTimeout(() => {
+            updateTrack(false);
+            wrapper.focus();
+        }, 50);
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                currentScroll = Math.min(currentScroll, getMaxScroll());
+                updateTrack(false);
+            }, 100);
+        });
+    })();
+
+    // nav helpers
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); document.getElementById('hamburger').classList.toggle('active'); }
+    function closeMenu() { document.getElementById('navLinks').classList.remove('active'); document.getElementById('hamburger').classList.remove('active'); }
+
+    function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500); }
+
+    async function subscribeNewsletter(e) {
+        e.preventDefault();
+        const email = e.target.querySelector('input').value.trim();
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('Please enter a valid email'); return; }
+        showToast('Subscribing...');
+        try {
+            await fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ requestType:'newsletter', email }) });
+            showToast('Thank you for subscribing!');
+            e.target.querySelector('input').value = '';
+        } catch(e) { showToast('Subscription failed.'); }
+    }
+
+    window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
+
+    // fade-up
+    const faders = document.querySelectorAll('.fade-up');
+    function checkFade() { faders.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('visible'); }); }
+    window.addEventListener('scroll', checkFade);
+    setTimeout(checkFade, 100);
+
+    loadFeaturedImagesFromSheet().then(() => attachCategoryClicks());
+
+    // hero image rotation
+    let imgIdx = 0;
+    const imgSets = [
+        { img1:"https://images.pexels.com/photos/6311708/pexels-photo-6311708.jpeg", img2:"https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg", img3:"https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg", img4:"https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg", img5:"https://images.pexels.com/photos/985635/pexels-photo-985635.jpeg" },
+        { img1:"https://images.pexels.com/photos/8214672/pexels-photo-8214672.jpeg", img2:"https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg", img3:"https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg", img4:"https://images.pexels.com/photos/1693590/pexels-photo-1693590.jpeg", img5:"https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg" },
+        { img1:"https://images.pexels.com/photos/19090/pexels-photo.jpg", img2:"https://images.pexels.com/photos/3680219/pexels-photo-3680219.jpeg", img3:"https://images.pexels.com/photos/8214672/pexels-photo-8214672.jpeg", img4:"https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg", img5:"https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg" }
+    ];
+    setInterval(() => {
+        imgIdx = (imgIdx + 1) % imgSets.length;
+        const s = imgSets[imgIdx];
+        document.getElementById('img1').src = s.img1;
+        document.getElementById('img2').src = s.img2;
+        document.getElementById('img3').src = s.img3;
+        document.getElementById('img4').src = s.img4;
+        document.getElementById('img5').src = s.img5;
+    }, 10000);
+</script>
+</body>
+</html>
